@@ -1,19 +1,14 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+// Capture HTML DOM Elements.
+const passwd = document.getElementById('password');
+const len = document.getElementById('length');
+const upper = document.getElementById('uppercase');
+const lower = document.getElementById('lowercase');
+const num = document.getElementById('numbers');
+const sym = document.getElementById('symbols');
+const gen = document.getElementById('generate');
+const copy = document.getElementById('clipboard');
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-//////////////////////////////////////////////////////
+/* == Get Random uppercase, lowercase, numeric and special symbols == */
 
 // Get a random lowercase letter from the alphabet. 
 function genRandLower() {
@@ -25,7 +20,7 @@ function genRandUpper() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
 }
 
-// Get a random number from 1 to 10.
+// Get a random number from 0 to 9.
 function genRandNum() {
   return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 }
