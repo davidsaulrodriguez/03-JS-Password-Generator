@@ -8,6 +8,27 @@ const sym = document.getElementById('symbols');
 const gen = document.getElementById('generate');
 const copy = document.getElementById('clipboard');
 
+
+// Put generator functions into an object for use later
+const randomizer = {
+  'lower': genRandLower,
+  'upper': genRandUpper,
+  'symbol': genRandSymbol,
+  'number': genRandNum
+};
+
+
+gen.addEventListener('click', () => {
+  let length = len.value;
+  // Sanitize input and set absolute default of 8 characters
+  // Do this only is length is `null` or less than 8.
+  if (length === 'null' || length < 8) {
+    length = 8;
+  }
+
+  console.log(length);
+})
+
 /* == Get Random uppercase, lowercase, numeric and special symbols == */
 
 // Get a random lowercase letter from the alphabet. 
