@@ -1,12 +1,12 @@
 // Capture HTML DOM Elements.
-const passwd = document.getElementById('password');
-const len = document.getElementById('length');
-const upper = document.getElementById('uppercase');
-const lower = document.getElementById('lowercase');
-const num = document.getElementById('numbers');
-const sym = document.getElementById('symbols');
-const gen = document.getElementById('generate');
-const copy = document.getElementById('clipboard');
+const passwd  = document.getElementById('password');
+const len     = document.getElementById('length');
+const upper   = document.getElementById('uppercase');
+const lower   = document.getElementById('lowercase');
+const num     = document.getElementById('numbers');
+const sym     = document.getElementById('symbols');
+const gen     = document.getElementById('generate');
+const copy    = document.getElementById('clipboard');
 
 
 // Put generator functions into an object for use later
@@ -18,16 +18,20 @@ const randomizer = {
 };
 
 
+// Generate the event listener (wait for the user to click the generate button)
 gen.addEventListener('click', () => {
-  let length = len.value;
+  // use a Unary plus operator to convert length from a String to a Number
+  let length = +len.value;
   // Sanitize input and set absolute default of 8 characters
   // Do this only is length is `null` or less than 8.
-  if (length === 'null' || length < 8) {
+  if (length === 0) {
     length = 8;
+    console.warn("WARN 01: A default of 8 characters was chosen because you either forgot to input a password length.");
+  } else if (length < 8) {
+    length = 8;
+    console.warn("WARN 02: A default of 8 characters was chosen because the password length you selected was few than 8 characters.");
   }
-
-  console.log(length);
-})
+});
 
 /* == Get Random uppercase, lowercase, numeric and special symbols == */
 
